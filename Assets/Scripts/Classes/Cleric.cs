@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
-public class Cleric : Class
+public class Cleric : CharacterClass
 {
     public Cleric(Character character) : base(character)
     {

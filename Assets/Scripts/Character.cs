@@ -7,6 +7,20 @@ using Random = System.Random;
 
 public abstract class Character: MonoBehaviour
 {
+    public enum Ability
+    {
+        STR, DEX, CON, INT, WIS, CHA, LENGTH
+    }
+    private int[] abilityMod = new int[(int)Ability.LENGTH];
+    private int[] abilityTotal = new int[(int)Ability.LENGTH];
+    private int[] abilitySave = new int[(int)Ability.LENGTH];
+
+    public enum Skill
+    {
+        ACR, ANH, ARC, ATH, DEC, HIS, INS, ITD, INV, MED, NAT, PRC, PRF, PRS, RLG, SOH, STL, SRV, LENGTH
+    }
+    private int[] skills = new int[(int)Skill.LENGTH];
+
     private string klass;
     private int level;
     private string backgroud;
@@ -19,42 +33,7 @@ public abstract class Character: MonoBehaviour
     private int speed;
     private int inspiration;
     private int proficiencyBonus;
-    private int strengthMod;
-    private int dexMod;
-    private int conMod;
-    private int intelligenceMod;
-    private int wisdomMod;
-    private int charismaMod;
-    private int strength;
-    private int dex;
-    private int con;
-    private int intelligence;
-    private int wisdom;
-    private int charisma;
-    private int strengthSave;
-    private int dexSave;
-    private int conSave;
-    private int intelligenceSave;
-    private int wisdomSave;
-    private int charismaSave;
-    private int acrobatics;
-    private int animalHandling;
-    private int arcana;
-    private int athletics;
-    private int deception;
-    private int history;
-    private int insight;
-    private int intimidation;
-    private int investigation;
-    private int medicine;
-    private int nature;
-    private int perception;
-    private int performance;
-    private int persuasion;
-    private int religion;
-    private int sleightOfHand;
-    private int stealth;
-    private int survival;
+    
     private int maxHP;
     private int currentHP;
     private int totalHitDice;

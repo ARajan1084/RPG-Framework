@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-public class Barbarian : Class
+public class Barbarian : CharacterClass
 {
     public static Dictionary<int, String> primalPath = new Dictionary<int, string>()
     {

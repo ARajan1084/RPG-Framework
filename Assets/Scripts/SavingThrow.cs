@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SavingThrow : MonoBehaviour
+[System.Serializable]
+public class SavingThrow
 {
     public string type;
     public string against;
