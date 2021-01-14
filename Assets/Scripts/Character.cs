@@ -60,7 +60,12 @@ public abstract class Character: MonoBehaviour
     private int totalHitDice;
     private int currentHitDice;
     public CharacterSheetBackend characterSheet;
-    public string[] spells;
+    public Dictionary<string, int> classResources = new Dictionary<string, int>();
+
+    private int[,] spellSlots = new int[9, 2];
+    public string[][] spells = new string[10][];
+
+    public string[] features;
 
     public void updateCharacterSheet()
     {
@@ -126,7 +131,7 @@ public abstract class Character: MonoBehaviour
     {
         
     }
-    
+
     public string Klass
     {
         get => klass;

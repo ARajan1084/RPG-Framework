@@ -24,12 +24,12 @@ public class Drow : Elf
     {
         if (character.Level == 3)
         {
-            character.spells.Append("FaerieFire");
+            character.spells[1].Append("FaerieFire");
         }
 
         if (character.Level == 5)
         {
-            character.spells.Append("Darkness");
+            character.spells[1].Append("Darkness");
         }
     }
 }

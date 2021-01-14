@@ -10,6 +10,12 @@ public abstract class Class : MonoBehaviour
     public string[] savingThrowProficiencies;
     public string[] armorProficiencies;
     public string[] weaponProficiencies;
+    public Character character;
+
+    public Class(Character character)
+    {
+        this.character = character;
+    }
 
     public void useHitDice(Character character)
     {
