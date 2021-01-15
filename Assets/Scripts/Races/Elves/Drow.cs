@@ -22,12 +22,12 @@ public class Drow : Elf
 
     public void processLevelUp(Character character)
     {
-        if (character.Level == 3)
+        if (character.level == 3)
         {
             character.spells[1].Append("FaerieFire");
         }
 
-        if (character.Level == 5)
+        if (character.level == 5)
         {
             character.spells[1].Append("Darkness");
         }

@@ -20,13 +20,13 @@ public abstract class CharacterClass : MonoBehaviour
     public void useHitDice(Character character)
     {
         int hpGain = RollParser.parseRoll(hitDie);
-        if (character.CurrentHp + hpGain > character.MaxHp)
+        if (character.currentHP + hpGain > character.maxHP)
         {
-            character.CurrentHp = character.MaxHp;
+            character.currentHP = character.maxHP;
         }
         else
         {
-            character.CurrentHp += hpGain;
+            character.currentHP += hpGain;
         }
         character.updateCharacterSheet();
     }
