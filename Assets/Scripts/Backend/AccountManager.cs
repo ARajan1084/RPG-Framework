@@ -80,6 +80,7 @@ public class AccountManager : MonoBehaviour
         {
             loginPanel.SetActive(false);
             string jsonData = request.downloadHandler.text;
+            Debug.Log(jsonData);
             PlayerInfoJson playerInfoJson = JsonUtility.FromJson<PlayerInfoJson>(Regex.Unescape(jsonData).Trim('"').Replace(" ", ""));
             playerInformation.playerID = playerInfoJson.playerID;
             playerInformation.username = playerInfoJson.username;

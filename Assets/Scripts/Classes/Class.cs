@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Class : MonoBehaviour
+public abstract class Class
 {
     public string description;
     public string hitDie;
