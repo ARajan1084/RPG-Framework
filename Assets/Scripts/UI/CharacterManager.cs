@@ -15,4 +15,9 @@ public class CharacterManager : MonoBehaviour
         characterCreatorScreen.SetActive(true);
         Character character = new Character();
     }
+
+    public void createDwarf()
+    {
+        
+    }
 }
