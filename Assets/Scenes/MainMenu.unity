@@ -2154,13 +2154,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-<<<<<<< Updated upstream
-  m_AnchoredPosition: {x: 63.001106, y: -148}
-  m_SizeDelta: {x: 117.568, y: 26.6535}
-=======
   m_AnchoredPosition: {x: 211.77429, y: -15}
   m_SizeDelta: {x: 280.92, y: 30}
->>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153522069
 MonoBehaviour:
@@ -2193,8 +2188,6 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-<<<<<<< Updated upstream
-=======
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2746,7 +2739,6 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4281479730
   m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
->>>>>>> Stashed changes
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2845,17 +2837,10 @@ RectTransform:
   m_Father: {fileID: 73128234}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-=======
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 73.484, y: -162.98172}
   m_SizeDelta: {x: 147.98, y: 25}
->>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &169466315
 MonoBehaviour:
@@ -2986,17 +2971,10 @@ RectTransform:
   m_Father: {fileID: 881464760}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< Updated upstream
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-=======
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 30.03975, y: -17.344}
   m_SizeDelta: {x: 60.0795, y: 34.688}
->>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &173679187
 MonoBehaviour:
@@ -3611,8 +3589,6 @@ MonoBehaviour:
   playerInformation: {fileID: 1503196057}
   entryScreen: {fileID: 1320189878}
   homeScreen: {fileID: 304508581}
-<<<<<<< Updated upstream
-=======
   friendShipManager: {fileID: 666580729}
   campaignManager: {fileID: 264317668}
 --- !u!1 &264317668
@@ -3864,7 +3840,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284529125}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &291241461
 GameObject:
   m_ObjectHideFlags: 0
@@ -5613,8 +5588,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
-<<<<<<< Updated upstream
-=======
 --- !u!1 &579708352
 GameObject:
   m_ObjectHideFlags: 0
@@ -5690,7 +5663,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 579708352}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &597566889
 GameObject:
   m_ObjectHideFlags: 0
@@ -6320,8 +6292,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 616670343}
   m_CullTransparentMesh: 1
-<<<<<<< Updated upstream
-=======
 --- !u!1 &618073065
 GameObject:
   m_ObjectHideFlags: 0
@@ -6398,7 +6368,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 618073065}
   m_CullTransparentMesh: 1
->>>>>>> Stashed changes
 --- !u!1 &640812361
 GameObject:
   m_ObjectHideFlags: 0
@@ -7899,8 +7868,6 @@ MonoBehaviour:
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &737915261
-<<<<<<< Updated upstream
-=======
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8072,7 +8039,6 @@ MonoBehaviour:
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &780232558
->>>>>>> Stashed changes
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
