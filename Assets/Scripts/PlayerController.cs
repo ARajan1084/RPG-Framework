@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     public GameObject[] rollWheels;
     private bool wheelActive = false;
 
+    public Vector2Int boardPos;
+
     // Update is called once per frame
     void Update()
     {
@@ -25,5 +27,17 @@ public class PlayerController : MonoBehaviour
         //         wheelActive = true;
         //     }
         // }
+    }
+
+    public void moveToBoardPos(BoardTile bt)
+    {
+        boardPos = bt.pos;
+
+        moveTo(bt.transform.position.x, bt.transform.position.z);
+    }
+
+    public void moveTo(float x, float z)
+    {
+        transform.position = new Vector3(x, transform.position.y, z);
     }
 }
