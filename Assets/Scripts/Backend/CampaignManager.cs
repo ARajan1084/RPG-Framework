@@ -69,7 +69,6 @@ public class CampaignManager : MonoBehaviour
                 Destroy(campaignPanel.gameObject);
             }
             string jsonData = request.downloadHandler.text;
-            Debug.Log(Regex.Unescape(jsonData).Trim('"').Replace(" ", ""));
             CampaignInfo[] campaigns = JsonHelper.FromJson<CampaignInfo>(Regex.Unescape(jsonData).Trim('"').Replace(" ", ""));
             foreach (CampaignInfo campaign in campaigns)
             {
