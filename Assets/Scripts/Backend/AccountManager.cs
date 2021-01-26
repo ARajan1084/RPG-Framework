@@ -27,6 +27,8 @@ public class AccountManager : MonoBehaviour
 
     public GameObject entryScreen;
     public GameObject homeScreen;
+    public GameObject friendShipManager;
+    public GameObject campaignManager;
 
     public void createAccount()
     {
@@ -80,7 +82,6 @@ public class AccountManager : MonoBehaviour
         {
             loginPanel.SetActive(false);
             string jsonData = request.downloadHandler.text;
-            Debug.Log(jsonData);
             PlayerInfoJson playerInfoJson = JsonUtility.FromJson<PlayerInfoJson>(Regex.Unescape(jsonData).Trim('"').Replace(" ", ""));
             playerInformation.playerID = playerInfoJson.playerID;
             playerInformation.username = playerInfoJson.username;
@@ -88,6 +89,8 @@ public class AccountManager : MonoBehaviour
             playerInformation.lastName = playerInfoJson.lastName;
             entryScreen.SetActive(false);
             homeScreen.SetActive(true);
+            friendShipManager.SetActive(true);
+            campaignManager.SetActive(true);
         }
     }
 
