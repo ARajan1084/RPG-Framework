@@ -53,6 +53,42 @@ public class Board : MonoBehaviour
             }
         }
 
+        //Generate graph
+        for (int i=0; i<tiles.GetLength(0); i++)
+        {
+            for (int j=0; j<tiles.GetLength(1); j++)
+            {
+                BoardTile t = tiles[i, j];
+                List<BoardTile> neighbors = new List<BoardTile>();
+
+                int xDelta = 1;
+                int yDelta = 0;
+                for (int k=0; k<4; k++)
+                {
+                    BoardTile nt = getTileAt(i + xDelta, j + yDelta);
+                    if (nt != null) neighbors.Add(nt);
+
+                    //Rotate clockwise
+                    int temp = xDelta;
+                    xDelta = yDelta;
+                    yDelta = -temp; //negative to create rotation
+                }
+
+                foreach (BoardTile nt in neighbors) t.neighbors.Add(nt);
+            }
+        }
+    }
+
+    public BoardTile getTileAt(int x, int y)
+    {
+        if (x < 0 || x >= tiles.GetLength(0) || y < 0 || y >= tiles.GetLength(1)) return null;
+
+        return tiles[x, y];
+    }
+
+    public BoardTile[] genPath(Vector2Int start, Vector2Int end)
+    {
+
     }
 
     // Update is called once per frame
