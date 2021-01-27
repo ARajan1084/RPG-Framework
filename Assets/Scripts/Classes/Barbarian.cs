@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-public class Barbarian : Class
+public class Barbarian : CharacterClass
 {
     public static readonly Dictionary<int, String> primalPath = new Dictionary<int, string>()
     {
@@ -33,23 +33,23 @@ public class Barbarian : Class
     public void processLevelUp(Character character, string primalPath = "", string totemSpirit = "", 
         string aspectOfTheBeast = "", string abilityScoreOne = "", string abilityScoreTwo = "")
     {
-        if (character.Level == 1)
+        if (character.level == 1)
         {
             character.features.Append("Rage");
             character.features.Append("UnarmoredDefense");
             character.classResources["maxRages"] = 2;
             character.classResources["currentRages"] = 2;
             character.classResources["rageDamage"] = 2;
-            character.ProficiencyBonus = 2;
+            character.proficiencyBonus = 2;
         }
         
-        if (character.Level == 2)
+        if (character.level == 2)
         {
             character.features.Append("RecklessAttack");
             character.features.Append("DangerSense");
         }
 
-        if (character.Level == 3)
+        if (character.level == 3)
         {
             character.classResources["maxRages"] = 3;
             character.classResources["currentRages"] += 1;
@@ -68,7 +68,7 @@ public class Barbarian : Class
             }
         }
 
-        if (character.Level == 4)
+        if (character.level == 4)
         {
             Type type = typeof(Character);
             if (abilityScoreTwo == "")
@@ -85,14 +85,14 @@ public class Barbarian : Class
             }
         }
 
-        if (character.Level == 5)
+        if (character.level == 5)
         {
-            character.ProficiencyBonus = 3;
+            character.proficiencyBonus = 3;
             character.features.Append("ExtraAttack");
             character.features.Append("FastMovement");
         }
 
-        if (character.Level == 6)
+        if (character.level == 6)
         {
             character.classResources["maxRages"] = 4;
             character.classResources["currentRages"] += 1;

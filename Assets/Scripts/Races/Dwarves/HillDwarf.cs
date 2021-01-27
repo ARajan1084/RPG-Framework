@@ -12,6 +12,6 @@ public class HillDwarf : Dwarf
     
     public void processLevelUp(Character character)
     {
-        character.MaxHp += 1;
+        character.maxHP += 1;
     }
 }

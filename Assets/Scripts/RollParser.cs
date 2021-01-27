@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using Random = System.Random;
 
-public class RollParser : MonoBehaviour
+public class RollParser
 {
     public static int parseRoll(string roll)
     {
