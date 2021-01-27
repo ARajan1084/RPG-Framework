@@ -3197,7 +3197,8 @@ MonoBehaviour:
   rollWheels:
   - {fileID: 1560844798}
   - {fileID: 529330277}
-  boardPos: {x: 0, y: 0}
+  boardPos: {x: 50, y: 50}
+  board: {fileID: 998985289}
 --- !u!114 &1256755360
 MonoBehaviour:
   m_ObjectHideFlags: 0
