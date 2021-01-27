@@ -39,7 +39,7 @@ public class BoardTile : MonoBehaviour
         rend.material.color = Color.blue;
 
         //Request player to move to its position
-        pcon.moveToBoardPos(this);
+        pcon.moveToBoardPos(pos);
     }
 
     private void OnMouseUp()

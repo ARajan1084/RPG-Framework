@@ -7,7 +7,9 @@ public class PlayerController : MonoBehaviour
     public GameObject[] rollWheels;
     private bool wheelActive = false;
 
-    public Vector2Int boardPos;
+    public Vector2Int boardPos = new Vector2Int(50, 50); //Rough approximation
+
+    public Board board;
 
     //Should probably be owned by some animator script instead of this...
     private Queue<Vector2> movementQueue;
@@ -42,8 +44,8 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 nextLoc = movementQueue.Peek();
 
-            float newX = Mathf.Lerp(transform.position.x, nextLoc.x, 0.1f);
-            float newZ = Mathf.Lerp(transform.position.z, nextLoc.y, 0.1f);
+            float newX = Mathf.Lerp(transform.position.x, nextLoc.x, 0.5f);
+            float newZ = Mathf.Lerp(transform.position.z, nextLoc.y, 0.5f);
 
             transform.position = new Vector3(newX, transform.position.y, newZ);
 
@@ -61,11 +63,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void moveToBoardPos(BoardTile bt)
+    public void moveToBoardPos(Vector2Int pos)
     {
-        boardPos = bt.pos;
+        List<BoardTile> path = board.genPath(boardPos, pos);
 
-        enqueue2DMovement(bt.transform.position.x, bt.transform.position.z);
+        foreach (BoardTile bt in path)
+        {
+            enqueue2DMovement(bt.transform.position.x, bt.transform.position.z);
+        }
+
+        boardPos = pos;
     }
 
     public void enqueue2DMovement(float x, float z)
