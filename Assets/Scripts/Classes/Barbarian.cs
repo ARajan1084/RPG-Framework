@@ -7,9 +7,16 @@ using UnityEngine;
 
 public class Barbarian : Class
 {
-    public static Dictionary<int, String> primalPath = new Dictionary<int, string>()
+    public static readonly Dictionary<int, String> primalPath = new Dictionary<int, string>()
     {
-        
+        {0, "Berserker"},
+        {1, "TotemWarrior"}
+    };
+    public static readonly Dictionary<int, String> totems = new Dictionary<int, string>()
+    {
+        {0, "Bear"},
+        {1, "Eagle"},
+        {2, "Wolf"}
     };
     public Barbarian(Character character): base(character)
     {
@@ -23,7 +30,8 @@ public class Barbarian : Class
         character.classResources.Add("rageDamage", 0);
     }
 
-    public void processLevelUp(Character character, string primalPath = "", string abilityScoreOne = "", string abilityScoreTwo = "")
+    public void processLevelUp(Character character, string primalPath = "", string totemSpirit = "", 
+        string aspectOfTheBeast = "", string abilityScoreOne = "", string abilityScoreTwo = "")
     {
         if (character.Level == 1)
         {
@@ -45,13 +53,18 @@ public class Barbarian : Class
         {
             character.classResources["maxRages"] = 3;
             character.classResources["currentRages"] += 1;
+            character.features.Append("PrimalPath");
             if (primalPath == "Berserker")
             {
+                character.classResources.Add("primalPath", Barbarian.primalPath.First(x => x.Value == primalPath).Key);
                 character.features.Append("Frenzy");
             } 
             else if (primalPath == "TotemWarrior")
             {
-                
+                character.classResources.Add("primalPath", Barbarian.primalPath.First(x => x.Value == primalPath).Key);
+                character.classResources.Add("totemSpirit", totems.First(x => x.Value == totemSpirit).Key);
+                character.features.Append("SpiritSeeker");
+                character.features.Append("TotemSpirit");
             }
         }
 
@@ -83,7 +96,15 @@ public class Barbarian : Class
         {
             character.classResources["maxRages"] = 4;
             character.classResources["currentRages"] += 1;
-            
+            if (character.classResources["primalPath"] == 0)
+            {
+                character.features.Append("MindlessRage");
+            } 
+            else if (character.classResources["primalPath"] == 1)
+            {
+                character.features.Append("AspectOfTheBeast");
+                character.classResources.Add("aspectOfTheBeast", totems.First(x => x.Value == aspectOfTheBeast).Key);
+            }
         }
     }
 }

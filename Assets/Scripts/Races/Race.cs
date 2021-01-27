@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Race : MonoBehaviour
+public abstract class Race
 {
     public Character character;
     public int constitutionScoreIncrease = 0;

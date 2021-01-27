@@ -27,6 +27,8 @@ public class AccountManager : MonoBehaviour
 
     public GameObject entryScreen;
     public GameObject homeScreen;
+    public GameObject friendShipManager;
+    public GameObject campaignManager;
 
     public void createAccount()
     {
@@ -87,6 +89,8 @@ public class AccountManager : MonoBehaviour
             playerInformation.lastName = playerInfoJson.lastName;
             entryScreen.SetActive(false);
             homeScreen.SetActive(true);
+            friendShipManager.SetActive(true);
+            campaignManager.SetActive(true);
         }
     }
 

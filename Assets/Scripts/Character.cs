@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = System.Random;
 
-public abstract class Character: MonoBehaviour
+public class Character: MonoBehaviour
 {
     private string klass;
     private int level;
