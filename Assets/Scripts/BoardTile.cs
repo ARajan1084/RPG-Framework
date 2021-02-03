@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,12 +23,6 @@ public class BoardTile : MonoBehaviour
         pcon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void setData(Vector2Int pos, Board parentBoard)
     {
         this.pos = pos;
@@ -38,8 +33,22 @@ public class BoardTile : MonoBehaviour
     {
         rend.material.color = Color.blue;
 
-        //Request player to move to its position
-        pcon.moveToBoardPos(pos);
+        // ensures pcon is referencing an active PlayerController
+        if (pcon != null)
+        {
+            //Request player to move to its position
+            pcon.moveToBoardPos(pos);
+        }
+    }
+    
+    private void OnMouseEnter()
+    {
+        rend.material.color = Color.red;
+    }
+
+    private void OnMouseExit()
+    {
+        rend.material.color = baseCol;
     }
 
     private void OnMouseUp()
