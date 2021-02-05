@@ -11,11 +11,16 @@ public class HotbarManager : MonoBehaviour
     public float activeAlpha = 0.6f;
     public GameObject activeObj;
 
-    private KeyCode[] keyCodes = new[]
+    private readonly KeyCode[] keyCodes = 
     {
         KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4,
         KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9, KeyCode.Alpha0
     };
+
+    private void Start()
+    {
+        setActive(0);
+    }
 
     public void Update()
     {
@@ -23,17 +28,7 @@ public class HotbarManager : MonoBehaviour
         {
             if (Input.GetKey(keyCodes[i]))
             {
-                setAlpha(slots[i], activeAlpha);
-                activeObj = slots[i].GetComponent<HotbarSlot>().asset;
-                for (int j = 0; j < i; j++)
-                {
-                    setAlpha(slots[j], inactiveAlpha);
-                }
-
-                for (int j = i + 1; j < slots.Length; j++)
-                {
-                    setAlpha(slots[j], inactiveAlpha);
-                }
+                setActive(i);
             }
         }
     }
@@ -44,5 +39,20 @@ public class HotbarManager : MonoBehaviour
         Color c = image.color;
         c.a = alphaValue;
         image.color = c;
+    }
+    
+    private void setActive(int slotIndex)
+    {
+        setAlpha(slots[slotIndex], activeAlpha);
+        activeObj = slots[slotIndex].GetComponent<HotbarSlot>().asset;
+        for (int j = 0; j < slotIndex; j++)
+        {
+            setAlpha(slots[j], inactiveAlpha);
+        }
+
+        for (int j = slotIndex + 1; j < slots.Length; j++)
+        {
+            setAlpha(slots[j], inactiveAlpha);
+        }
     }
 }
