@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1948938254312875338}
   - component: {fileID: 1948938254312875339}
   - component: {fileID: 1948938254312875336}
-  - component: {fileID: 1948938254312875348}
+  - component: {fileID: 6960078380653403740}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -97,7 +97,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1948938254312875348
+--- !u!114 &6960078380653403740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,9 +106,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1948938254312875337}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 580550442e3edc845bce2ca29bcd044c, type: 3}
+  m_Script: {fileID: 11500000, guid: f0bdda6cf3ecc469f8883f69acc5a36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   boardTilePrefab: {fileID: 3068210360825659071, guid: 57e9a946a37433d4eac5c139cb68431e, type: 3}
   boardTileElevationDelta: 0.1
   tileSize: {x: 1, y: 0, z: 1}
+  hotbarManager: {fileID: 0}

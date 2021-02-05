@@ -11,8 +11,6 @@ public class BoardTile : MonoBehaviour
     public Vector2Int pos;
     private Board parentBoard;
 
-    private PlayerController pcon;
-
     public List<BoardTile> neighbors;
 
     // Start is called before the first frame update
@@ -20,7 +18,6 @@ public class BoardTile : MonoBehaviour
     {
         rend = GetComponent<MeshRenderer>();
         baseCol = rend.material.color;
-        pcon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     public void setData(Vector2Int pos, Board parentBoard)
@@ -32,13 +29,8 @@ public class BoardTile : MonoBehaviour
     private void OnMouseDown()
     {
         rend.material.color = Color.blue;
-
-        // ensures pcon is referencing an active PlayerController
-        if (pcon != null)
-        {
-            //Request player to move to its position
-            pcon.moveToBoardPos(pos);
-        }
+        // Requests corresponding board to do the corresponding action
+        parentBoard.OnClick(this);
     }
     
     private void OnMouseEnter()

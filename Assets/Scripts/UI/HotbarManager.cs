@@ -9,6 +9,7 @@ public class HotbarManager : MonoBehaviour
     public GameObject[] slots;
     public float inactiveAlpha = 0.1f;
     public float activeAlpha = 0.6f;
+    public GameObject activeObj;
 
     private KeyCode[] keyCodes = new[]
     {
@@ -23,6 +24,7 @@ public class HotbarManager : MonoBehaviour
             if (Input.GetKey(keyCodes[i]))
             {
                 setAlpha(slots[i], activeAlpha);
+                activeObj = slots[i].GetComponent<HotbarSlot>().asset;
                 for (int j = 0; j < i; j++)
                 {
                     setAlpha(slots[j], inactiveAlpha);

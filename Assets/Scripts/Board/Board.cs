@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Board : MonoBehaviour
+public abstract class Board : MonoBehaviour
 {
 
     public GameObject boardTilePrefab;
@@ -12,7 +12,7 @@ public class Board : MonoBehaviour
     private BoardTile[,] tiles;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         //Lay down tile prefabs -------------------------------
         //Grab bounds
@@ -190,6 +190,8 @@ public class Board : MonoBehaviour
 
         return o;
     }
+
+    public abstract void OnClick(BoardTile tile);
 
     class NodeInfo
     {
