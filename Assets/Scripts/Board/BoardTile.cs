@@ -28,23 +28,35 @@ public class BoardTile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        rend.material.color = Color.blue;
-        // Requests corresponding board to do the corresponding action
-        parentBoard.OnClick(this);
+        if (enabled)
+        {
+            rend.material.color = Color.blue;
+            // Requests corresponding board to do the corresponding action
+            parentBoard.OnClick(this);
+        }
     }
     
     private void OnMouseEnter()
     {
-        rend.material.color = Color.red;
+        if (enabled)
+        {
+            rend.material.color = Color.red;
+        }
     }
 
     private void OnMouseExit()
     {
-        rend.material.color = baseCol;
+        if (enabled)
+        {
+            rend.material.color = baseCol;
+        }
     }
 
     private void OnMouseUp()
     {
-        rend.material.color = baseCol;
+        if (enabled)
+        {
+            rend.material.color = Color.red;
+        }
     }
 }

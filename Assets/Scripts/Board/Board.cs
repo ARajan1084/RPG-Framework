@@ -207,9 +207,11 @@ public abstract class Board : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void setTileState(bool state)
     {
-        
+        foreach (BoardTile tile in tiles)
+        {
+            tile.enabled = state;
+        }
     }
 }

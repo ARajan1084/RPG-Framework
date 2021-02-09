@@ -76,10 +76,11 @@ public class CampaignManager : MonoBehaviour
                 TMP_Text[] campaignInfo = campaignPanel.GetComponentsInChildren<TMP_Text>();
                 campaignInfo[0].SetText(campaign.campaign_name);
                 campaignInfo[1].SetText(campaign.dm_name);
+                campaignPanel.GetComponent<Campaign>().campaignID = campaign.campaign_id;
             }
         }
     }
-
+    
     private class CampaignCreationInfo
     {
         public string playerID;
@@ -98,12 +99,14 @@ public class CampaignManager : MonoBehaviour
         public string campaign_name;
         public string campaign_description;
         public string dm_name;
+        public string campaign_id;
 
-        public CampaignInfo(string campaignName, string campaignDescription, string dmName)
+        public CampaignInfo(string campaignName, string campaignDescription, string dmName, string campaignID)
         {
             campaign_name = campaignName;
             campaign_description = campaignDescription;
             dm_name = dmName;
+            campaign_id = campaignID;
         }
     }
     
