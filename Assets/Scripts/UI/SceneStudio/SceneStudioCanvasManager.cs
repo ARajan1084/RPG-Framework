@@ -19,6 +19,15 @@ public class SceneStudioCanvasManager : MonoBehaviour
             hotbar.GetComponent<HotbarManager>().enabled = !active;
             cameraController.GetComponent<DMCameraController>().enabled = !active;
             ground.GetComponent<Board>().setTileState(!active);
+            Cursor.visible = active;
+            if (active)
+            {
+                Cursor.lockState = CursorLockMode.Confined;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
             active = !active;
         }
     }

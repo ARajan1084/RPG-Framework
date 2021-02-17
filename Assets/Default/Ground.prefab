@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6960078380653403740}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Static
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,4 +112,3 @@ MonoBehaviour:
   boardTilePrefab: {fileID: 3068210360825659071, guid: 57e9a946a37433d4eac5c139cb68431e, type: 3}
   boardTileElevationDelta: 0.1
   tileSize: {x: 1, y: 0, z: 1}
-  hotbarManager: {fileID: 0}

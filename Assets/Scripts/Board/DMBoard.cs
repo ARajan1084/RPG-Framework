@@ -14,6 +14,8 @@ public class DMBoard : Board
     
     public override void OnClick(BoardTile tile)
     {
-        Instantiate(hotbarManager.activeObj, tile.transform);
+        Vector3 pos = tile.transform.position;
+        float yPos = hotbarManager.activeObj.transform.position.y;
+        Instantiate(hotbarManager.activeObj, new Vector3(pos.x, yPos, pos.z), hotbarManager.activeObj.transform.rotation);
     }
 }

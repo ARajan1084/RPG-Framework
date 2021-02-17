@@ -19,10 +19,16 @@ public class CampaignManager : MonoBehaviour
     public TMP_InputField campaignNameInputField;
     public TMP_Text createCampaignPanelErrorMessage;
     public TMP_Text homeScreenErrorMessage;
+    public string activeCampaign;
 
     public void Start()
     {
         refreshCampaigns();
+    }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
     }
 
     public void createCampaign()

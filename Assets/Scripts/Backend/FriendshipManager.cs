@@ -26,6 +26,11 @@ public class FriendshipManager : MonoBehaviour
         refreshFriendRequests();
     }
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void refreshFriends()
     {
         string playerInfo = getPlayerInfoJson();

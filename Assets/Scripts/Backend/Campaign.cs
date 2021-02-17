@@ -9,6 +9,8 @@ public class Campaign : MonoBehaviour
 
     public void launchCampaign()
     {
-        SceneManager.LoadScene("Scenes/SceneStudio");
+        CampaignManager campaignManager = FindObjectOfType<CampaignManager>();
+        campaignManager.activeCampaign = campaignID;
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/SceneStudio");
     }
 }

@@ -30,6 +30,11 @@ public class AccountManager : MonoBehaviour
     public GameObject friendShipManager;
     public GameObject campaignManager;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void createAccount()
     {
         string username = usernameInputField.text;
