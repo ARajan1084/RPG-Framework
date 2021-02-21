@@ -19,7 +19,6 @@ public class SceneManager : MonoBehaviour
     {
         campaignID = FindObjectOfType<CampaignManager>().activeCampaign;
         fetchActiveScene(campaignID);
-        fetchSceneAssetData();
     }
 
     public void saveScene()
@@ -50,6 +49,7 @@ public class SceneManager : MonoBehaviour
     {
         SceneRequestData requestData = new SceneRequestData(sceneID, campaignID);
         string requestDataJson = JsonUtility.ToJson(requestData);
+        Debug.Log(requestDataJson);
         UnityWebRequest request = PreparePostRequest("http://127.0.0.1:8000/campaigns/scenes/assets/fetch", requestDataJson);
         StartCoroutine(sendFetchSceneAssetDataRequest(request));
     }
@@ -69,17 +69,12 @@ public class SceneManager : MonoBehaviour
             // instantiates each asset into scene
             foreach (Asset asset in assets)
             {
-                GameObject instantiated = Instantiate(fetchAsset(asset.asset_id), new Vector3(asset.x_pos, asset.y_pos, asset.z_pos), 
+                Debug.Log(asset.asset_id);
+                GameObject instantiated = Instantiate(Resources.Load<GameObject>(asset.asset_id), new Vector3(asset.x_pos, asset.y_pos, asset.z_pos), 
                     Quaternion.Euler(asset.x_rot, asset.y_rot, asset.z_rot));
                 instantiated.transform.localScale = new Vector3(asset.x_scale, asset.y_scale, asset.z_scale);
             }
         }
-    }
-
-    GameObject fetchAsset(string assetID)
-    {
-        
-        return null;
     }
 
     public void fetchActiveScene(string campaignID)
@@ -96,10 +91,9 @@ public class SceneManager : MonoBehaviour
         if (request.error == null)
         {
             string jsonData = request.downloadHandler.text;
-            Debug.Log(Regex.Unescape(jsonData).Trim('"').Replace(" ", ""));
             SceneRequestData activeScene = JsonUtility.FromJson<SceneRequestData>(Regex.Unescape(jsonData).Trim('"').Replace(" ", ""));
-            Debug.Log(activeScene.scene_id);
             sceneID = activeScene.scene_id;
+            fetchSceneAssetData();
         }
         else
         {

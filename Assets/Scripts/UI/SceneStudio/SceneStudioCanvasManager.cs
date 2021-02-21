@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,12 @@ public class SceneStudioCanvasManager : MonoBehaviour
     public GameObject ground;
 
     private bool active = true;
-    
+
+    private void Start()
+    {
+        ground = GameObject.Find("Ground");
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
