@@ -14,7 +14,7 @@ public class SceneStudioCanvasManager : MonoBehaviour
 
     private void Start()
     {
-        ground = GameObject.Find("Ground");
+        
     }
 
     void Update()

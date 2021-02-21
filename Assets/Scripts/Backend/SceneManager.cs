@@ -14,6 +14,7 @@ public class SceneManager : MonoBehaviour
     public TMP_InputField sceneName;
     public string sceneID;
     public string campaignID;
+    public SceneStudioCanvasManager sceneStudioCanvasManager;
 
     public void Start()
     {
@@ -23,20 +24,21 @@ public class SceneManager : MonoBehaviour
 
     public void saveScene()
     {
-        Asset[] assets = {};
+        GameObject[] staticGameObjects = GameObject.FindGameObjectsWithTag("Static");
+        Asset[] assets = new Asset[staticGameObjects.Length];
         
-        foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Static"))
+        for (int i = 0; i < assets.Length; i++)
         {
-            Transform t = gameObject.transform;
+            Transform t = staticGameObjects[i].transform;
             Vector3 pos = t.position;
             Vector3 rot = t.rotation.eulerAngles;
             Vector3 scale = t.localScale;
-            Asset asset = new Asset(sceneID, gameObject.name, pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, scale.x, scale.y, scale.z);
-            assets.Append(asset);
+            assets[i] = new Asset(staticGameObjects[i].name.Replace("(Clone)", ""), pos.x, pos.y, pos.z, rot.x, rot.y, rot.z, scale.x, scale.y, scale.z);
         }
+        Debug.Log(assets.Length);
 
         string jsonData = JsonHelper.ToJson(assets);
-        UnityWebRequest request = PreparePostRequest("http://127.0.0.1:8000/campaigns/scenes/assets/save", jsonData);
+        UnityWebRequest request = PreparePostRequest("http://127.0.0.1:8000/campaigns/scenes/assets/save/" + sceneID, jsonData);
         StartCoroutine(sendSaveSceneRequest(request));
     }
 
@@ -74,6 +76,7 @@ public class SceneManager : MonoBehaviour
                     Quaternion.Euler(asset.x_rot, asset.y_rot, asset.z_rot));
                 instantiated.transform.localScale = new Vector3(asset.x_scale, asset.y_scale, asset.z_scale);
             }
+            sceneStudioCanvasManager.ground = GameObject.FindGameObjectWithTag("Board");
         }
     }
 
@@ -114,7 +117,6 @@ public class SceneManager : MonoBehaviour
     [Serializable]
     public class Asset
     {
-        public string scene_id;
         public string asset_id;
         public float x_pos;
         public float y_pos;
@@ -126,9 +128,8 @@ public class SceneManager : MonoBehaviour
         public float y_scale;
         public float z_scale;
 
-        public Asset(string sceneID, string assetID, float xPos, float yPos, float zPos, float xRot, float yRot, float zRot, float xScale, float yScale, float zScale)
+        public Asset(string assetID, float xPos, float yPos, float zPos, float xRot, float yRot, float zRot, float xScale, float yScale, float zScale)
         {
-            scene_id = sceneID;
             asset_id = assetID;
             x_pos = xPos;
             y_pos = yPos;

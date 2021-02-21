@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HotbarManager
   - Static
+  - Board
   layers:
   - Default
   - TransparentFX

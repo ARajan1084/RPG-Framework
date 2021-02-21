@@ -671,7 +671,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 87.30029, y: -87.35889}
+  m_AnchoredPosition: {x: 87.30029, y: -87.468285}
   m_SizeDelta: {x: 148.1439, y: 24.0719}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &358535375
@@ -881,7 +881,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 87.30029, y: -54.942383}
+  m_AnchoredPosition: {x: 87.30029, y: -55.007927}
   m_SizeDelta: {x: 148.1439, y: 24.0719}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &388364555
@@ -927,7 +927,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 388364556}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1666704722}
+        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
+        m_MethodName: saveScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &388364556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2309,7 +2321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 87.30029, y: -21.867188}
+  m_AnchoredPosition: {x: 87.30029, y: -21.888876}
   m_SizeDelta: {x: 114.5515, y: 25.3893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278681076
@@ -2650,6 +2662,7 @@ MonoBehaviour:
   sceneName: {fileID: 0}
   sceneID: 
   campaignID: 
+  sceneStudioCanvasManager: {fileID: 1409321622}
 --- !u!4 &1666704723
 Transform:
   m_ObjectHideFlags: 0
