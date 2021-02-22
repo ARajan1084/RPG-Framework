@@ -26,6 +26,11 @@ public abstract class Board : MonoBehaviour
         boundsMin.Scale(transform.localScale);
         boundsMin += transform.position;
 
+        //Get offset for board tile
+        Bounds btBounds = boardTilePrefab.GetComponent<MeshFilter>().sharedMesh.bounds;
+        Vector3 btBoundsMin = btBounds.min;
+        boundsMin -= new Vector3(btBoundsMin.x, 0, btBoundsMin.y);
+
         int xCount = (int) (boundsSize.x / tileSize.x);
         int zCount = (int) (boundsSize.z / tileSize.z);
 
