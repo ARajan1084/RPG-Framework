@@ -6,7 +6,7 @@ public class DMBoard : Board
 {
     private HotbarManager hotbarManager;
 
-    public void Start()
+    public override void Start()
     {
         base.Start();
         hotbarManager = GameObject.FindGameObjectWithTag("HotbarManager").GetComponent<HotbarManager>();

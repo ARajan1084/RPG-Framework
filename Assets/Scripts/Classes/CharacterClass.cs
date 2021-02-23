@@ -18,15 +18,15 @@ public abstract class CharacterClass : MonoBehaviour {
 
     public void useHitDice(Character character)
     {
-        int hpGain = RollParser.parseRoll(hitDie);
-        if (character.currentHP + hpGain > character.maxHP)
-        {
-            character.currentHP = character.maxHP;
-        }
-        else
-        {
-            character.currentHP += hpGain;
-        }
-        character.updateCharacterSheet();
+        // // int hpGain = RollCompiler.parseRoll(hitDie);
+        // if (character.currentHP + hpGain > character.maxHP)
+        // {
+        //     character.currentHP = character.maxHP;
+        // }
+        // else
+        // {
+        //     character.currentHP += hpGain;
+        // }
+        // character.updateCharacterSheet();
     }
 }

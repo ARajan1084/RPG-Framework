@@ -12,7 +12,7 @@ public abstract class Board : MonoBehaviour
     private BoardTile[,] tiles;
 
     // Start is called before the first frame update
-    public void Start()
+    public virtual void Start()
     {
         //Lay down tile prefabs -------------------------------
         //Grab bounds

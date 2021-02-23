@@ -14,7 +14,7 @@ public class SceneManager : MonoBehaviour
     public TMP_InputField sceneName;
     public string sceneID;
     public string campaignID;
-    public SceneStudioCanvasManager sceneStudioCanvasManager;
+    public CanvasManager canvasManager;
 
     public void Start()
     {
@@ -71,12 +71,11 @@ public class SceneManager : MonoBehaviour
             // instantiates each asset into scene
             foreach (Asset asset in assets)
             {
-                Debug.Log(asset.asset_id);
                 GameObject instantiated = Instantiate(Resources.Load<GameObject>(asset.asset_id), new Vector3(asset.x_pos, asset.y_pos, asset.z_pos), 
                     Quaternion.Euler(asset.x_rot, asset.y_rot, asset.z_rot));
                 instantiated.transform.localScale = new Vector3(asset.x_scale, asset.y_scale, asset.z_scale);
             }
-            sceneStudioCanvasManager.ground = GameObject.FindGameObjectWithTag("Board");
+            canvasManager.ground = GameObject.FindGameObjectWithTag("Board");
         }
     }
 

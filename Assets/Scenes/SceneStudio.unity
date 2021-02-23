@@ -2321,7 +2321,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 87.30029, y: -21.888876}
+  m_AnchoredPosition: {x: 87.30029, y: -21.888855}
   m_SizeDelta: {x: 114.5515, y: 25.3893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278681076
@@ -2574,10 +2574,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e0c96017d954c3b8a58c5c1ddcaafb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ground: {fileID: 0}
   hotbar: {fileID: 1847277113}
   optionsPanel: {fileID: 1077808889}
   cameraController: {fileID: 1692912064}
-  ground: {fileID: 0}
 --- !u!1 &1587725305
 GameObject:
   m_ObjectHideFlags: 0
@@ -2662,7 +2662,7 @@ MonoBehaviour:
   sceneName: {fileID: 0}
   sceneID: 
   campaignID: 
-  sceneStudioCanvasManager: {fileID: 1409321622}
+  canvasManager: {fileID: 1409321622}
 --- !u!4 &1666704723
 Transform:
   m_ObjectHideFlags: 0

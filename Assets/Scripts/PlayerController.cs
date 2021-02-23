@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         movementQueue = new Queue<Vector2>();
+        
     }
 
     // Update is called once per frame

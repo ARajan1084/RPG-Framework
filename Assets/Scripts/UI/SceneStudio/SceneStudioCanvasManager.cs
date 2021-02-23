@@ -3,19 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneStudioCanvasManager : MonoBehaviour
+public class SceneStudioCanvasManager : CanvasManager
 {
     public GameObject hotbar;
     public GameObject optionsPanel;
     public GameObject cameraController;
-    public GameObject ground;
 
     private bool active = true;
-
-    private void Start()
-    {
-        
-    }
 
     void Update()
     {

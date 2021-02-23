@@ -6,7 +6,7 @@ public class PlayerBoard : Board
 {
     private PlayerController pcon;
 
-    void Start()
+    public override void Start()
     {
         base.Start();
         pcon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
