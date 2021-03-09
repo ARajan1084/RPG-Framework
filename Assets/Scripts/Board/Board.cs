@@ -35,7 +35,6 @@ public abstract class Board : MonoBehaviour
         int zCount = (int) (boundsSize.z / tileSize.z);
 
         tiles = new BoardTile[xCount, zCount];
-
         //2d traversal to lay down tiles
         for (int x=0; x<xCount; x++)
         {
@@ -120,6 +119,9 @@ public abstract class Board : MonoBehaviour
         {
             NodeInfo currN = nodes[0];
             nodes.RemoveAt(0);
+
+            // Debug.Log(start);
+            // Debug.Log(currN);
 
             //Grab next nodes
             List<BoardTile> adjT = getTileAt(currN.pos).neighbors;

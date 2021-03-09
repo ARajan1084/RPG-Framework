@@ -8,13 +8,14 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.PlayerLoop;
 
-public class SceneManager : MonoBehaviour
+public abstract class SceneManager : MonoBehaviour
 {
-    public TMP_InputField sceneName;
-    public string sceneID;
+    public string activeSceneID;
     public string campaignID;
     public CanvasManager canvasManager;
+    public ArrayList scenes = new ArrayList();
 
     public void Start()
     {
@@ -38,7 +39,7 @@ public class SceneManager : MonoBehaviour
         Debug.Log(assets.Length);
 
         string jsonData = JsonHelper.ToJson(assets);
-        UnityWebRequest request = PreparePostRequest("http://127.0.0.1:8000/campaigns/scenes/assets/save/" + sceneID, jsonData);
+        UnityWebRequest request = PreparePostRequest("http://127.0.0.1:8000/campaigns/scenes/assets/save/" + activeSceneID, jsonData);
         StartCoroutine(sendSaveSceneRequest(request));
     }
 
@@ -49,61 +50,57 @@ public class SceneManager : MonoBehaviour
     
     public void fetchSceneAssetData()
     {
-        SceneRequestData requestData = new SceneRequestData(sceneID, campaignID);
+        SceneRequestData requestData = new SceneRequestData(activeSceneID, campaignID);
         string requestDataJson = JsonUtility.ToJson(requestData);
-        Debug.Log(requestDataJson);
-        UnityWebRequest request = PreparePostRequest("http://127.0.0.1:8000/campaigns/scenes/assets/fetch", requestDataJson);
+        UnityWebRequest request = PreparePostRequest("http://127.0.0.1:8000/campaigns/scenes/assets/fetch/", requestDataJson);
         StartCoroutine(sendFetchSceneAssetDataRequest(request));
     }
 
-    IEnumerator sendFetchSceneAssetDataRequest(UnityWebRequest request)
+    public abstract IEnumerator sendFetchSceneAssetDataRequest(UnityWebRequest request);
+    
+    public void instantiateAsset(Asset asset)
     {
-        yield return request.SendWebRequest();
-        if (request.error != null)
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Scenes/MainMenu");
-        }
-        else
-        {
-            string jsonData = request.downloadHandler.text;
-            // creates asset objects from downloaded JSON
-            Asset[] assets = JsonHelper.FromJson<Asset>(Regex.Unescape(jsonData).Trim('"').Replace(" ", ""));
-            // instantiates each asset into scene
-            foreach (Asset asset in assets)
-            {
-                GameObject instantiated = Instantiate(Resources.Load<GameObject>(asset.asset_id), new Vector3(asset.x_pos, asset.y_pos, asset.z_pos), 
-                    Quaternion.Euler(asset.x_rot, asset.y_rot, asset.z_rot));
-                instantiated.transform.localScale = new Vector3(asset.x_scale, asset.y_scale, asset.z_scale);
-            }
-            canvasManager.ground = GameObject.FindGameObjectWithTag("Board");
-        }
+        GameObject instantiated = Instantiate(Resources.Load<GameObject>(asset.asset_id), new Vector3(asset.x_pos, asset.y_pos, asset.z_pos), 
+            Quaternion.Euler(asset.x_rot, asset.y_rot, asset.z_rot));
+        instantiated.transform.localScale = new Vector3(asset.x_scale, asset.y_scale, asset.z_scale);
     }
 
     public void fetchActiveScene(string campaignID)
     {
         ActiveSceneRequestData requestData = new ActiveSceneRequestData(campaignID);
         string requestDataJson = JsonUtility.ToJson(requestData);
-        UnityWebRequest request = PreparePostRequest("http://127.0.0.1:8000/campaigns/scenes/fetch", requestDataJson);
+        UnityWebRequest request = PreparePostRequest("http://127.0.0.1:8000/campaigns/scenes/fetch/active/", requestDataJson);
         StartCoroutine(sendFetchActiveSceneRequest(request));
     }
 
-    IEnumerator sendFetchActiveSceneRequest(UnityWebRequest request)
+    public abstract IEnumerator sendFetchActiveSceneRequest(UnityWebRequest request);
+
+    public void fetchScenes()
+    {
+        string requestDataJson = JsonUtility.ToJson(new ActiveSceneRequestData(campaignID));
+        UnityWebRequest request = PreparePostRequest("http://127.0.0.1:8000/campaigns/scenes/fetch/", requestDataJson);
+        StartCoroutine(sendFetchScenesRequest(request));
+    }
+
+    IEnumerator sendFetchScenesRequest(UnityWebRequest request)
     {
         yield return request.SendWebRequest();
         if (request.error == null)
         {
             string jsonData = request.downloadHandler.text;
-            SceneRequestData activeScene = JsonUtility.FromJson<SceneRequestData>(Regex.Unescape(jsonData).Trim('"').Replace(" ", ""));
-            sceneID = activeScene.scene_id;
-            fetchSceneAssetData();
-        }
-        else
-        {
-            Debug.Log("Cannot fetch active scene");
+            SceneInformation[] scenes =
+                JsonHelper.FromJson<SceneInformation>(Regex.Unescape(jsonData).Trim('"').Replace(" ", ""));
+            foreach (SceneInformation scene in scenes)
+            {
+                this.scenes.Add(scene);
+            }
+            updateScenes();
         }
     }
-    
-    UnityWebRequest PreparePostRequest(string url, string sceneDataJson)
+
+    public abstract void updateScenes();
+
+    public UnityWebRequest PreparePostRequest(string url, string sceneDataJson)
     {
         var request = new UnityWebRequest(url, "POST");
         byte[] bodyRaw = Encoding.UTF8.GetBytes(sceneDataJson);
@@ -155,13 +152,26 @@ public class SceneManager : MonoBehaviour
     }
 
     [Serializable]
-    private class ActiveSceneRequestData
+    public class ActiveSceneRequestData
     {
         public string campaignID;
 
         public ActiveSceneRequestData(string campaignID)
         {
             this.campaignID = campaignID;
+        }
+    }
+    
+    [Serializable]
+    public class SceneInformation
+    {
+        public string scene_id;
+        public string scene_name;
+
+        public SceneInformation(string sceneID, string sceneName)
+        {
+            scene_id = sceneID;
+            scene_name = sceneName;
         }
     }
 }

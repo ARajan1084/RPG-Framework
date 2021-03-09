@@ -7,6 +7,7 @@ public class SceneStudioCanvasManager : CanvasManager
 {
     public GameObject hotbar;
     public GameObject optionsPanel;
+    public GameObject scenesPanel;
     public GameObject cameraController;
 
     private bool active = true;
@@ -16,6 +17,7 @@ public class SceneStudioCanvasManager : CanvasManager
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             optionsPanel.SetActive(active);
+            scenesPanel.SetActive(active);
             hotbar.GetComponent<HotbarManager>().enabled = !active;
             cameraController.GetComponent<DMCameraController>().enabled = !active;
             ground.GetComponent<Board>().setTileState(!active);

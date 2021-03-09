@@ -5,16 +5,4 @@ using UnityEngine;
 public abstract class CanvasManager : MonoBehaviour
 {
     public GameObject ground;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

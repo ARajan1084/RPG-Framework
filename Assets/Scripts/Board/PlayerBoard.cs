@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class PlayerBoard : Board
     {
         base.Start();
         pcon = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        pcon.board = this;
     }
 
     public override void OnClick(BoardTile tile)
