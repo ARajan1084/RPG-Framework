@@ -60,3 +60,4 @@ crashlytics-build.properties
 
 .vsconfig
 ProjectSettings/ProjectVersion.txt
+*.xml
